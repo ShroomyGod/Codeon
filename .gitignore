@@ -1,0 +1,26 @@
+# Build output
+node_modules/
+out/
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+install*.log
+electron-install.log
+
+# Local environment / secrets
+.env
+.env.local
+*.key
+
+# Editor + OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Agent workspace metadata
+.freebuff/

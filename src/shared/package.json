@@ -1,0 +1,4 @@
+{
+  "//": "Marks this folder as ESM so Node's type stripping loads these modules without a reparse warning. Bundlers ignore it.",
+  "type": "module"
+}
