@@ -7,9 +7,11 @@
 **An AI copilot for Roblox Studio that attaches to your live session, reviews every change as a diff, and drives playtests.**
 
 [![Release](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FShroomyGod%2FCodeon%2Fmain%2Fpackage.json&query=%24.version&label=version&color=e8823c)](https://github.com/ShroomyGod/Codeon/releases)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Codeon%20Community%20License-orange.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows-0078d4.svg)](#installation)
 [![Built with](https://img.shields.io/badge/built%20with-Electron%20%2B%20React-47848f.svg)](#architecture)
+
+**[Guides, setup & downloads →](https://shroomygod.github.io/Codeon/)**
 
 [Install](#installation) · [Quick start](#quick-start) · [Features](#features) · [Providers](#ai-providers) · [Releasing](#versioning-and-releases) · [Architecture](#architecture)
 
@@ -38,7 +40,7 @@ Think of it as a pair programmer that knows what is in your Explorer right now.
 | ▶️ **Playtests the AI can drive** | Start and stop Studio's Run mode from the app and from the agent, with the full Output stream captured for analysis. |
 | 🗂️ **Projects, not just chats** | Group sessions, file snapshots and review history per place, so switching work does not lose context. |
 | 🆓 **Free by default** | OpenCode Zen's keyless tier works out of the box: a hand-picked list of free coding models, no account and no sign-up. Bring your own key for anything else. |
-| 🧩 **Twelve providers** | OpenAI, Anthropic, Gemini, OpenRouter, Groq, DeepSeek, Mistral, xAI, Together, Cerebras, Ollama and LM Studio — plus any OpenAI-compatible endpoint. |
+| 🧩 **Thirteen providers** | OpenAI, Anthropic, Gemini, OpenRouter, Groq, DeepSeek, Mistral, xAI, Together, Cerebras, GitHub Copilot, Ollama and LM Studio — plus any OpenAI-compatible endpoint. |
 | 🚀 **One-command releases** | `npm run release` bumps the version by this project's rules, builds the installer, tags it, and publishes the GitHub release. |
 
 ---
@@ -207,6 +209,7 @@ the project folder and never sent anywhere except the provider itself.
 | xAI | Yes | Grok 4, Grok Code Fast |
 | Together AI | Yes | Kimi K2, Qwen3 Coder |
 | Cerebras | Yes | Fast Qwen3 Coder |
+| GitHub Copilot | Yes | Copilot subscription; paste an OAuth/PAT token, refresh to list your plan's models |
 | Ollama / LM Studio | No | Fully local, no quota, no internet |
 | Custom | Optional | Any OpenAI-compatible base URL |
 
@@ -218,52 +221,41 @@ from the endpoint.
 
 ## Versioning and releases
 
-Two moving parts: the version a release gets, and the tag it lives under.
+One version, one tag, one release — a version number always means exactly what it says.
 
 ### Version rules
 
 | Change | Bump | Example |
 | --- | --- | --- |
-| Bug fixes, small polish | **patch** | `1.0.0` → `1.0.1` |
-| New features, whole updates | **minor** | `1.0.0` → `1.1.0` |
-| Breaking rewrites | **major** | `1.0.0` → `2.0.0` |
+| Bug fixes, small polish | **patch** | `1.1.3` → `1.1.4` (tag `v1.1.4`) |
+| New features, whole updates | **minor** | `1.1.3` → `1.2.0` (tag `v1.2.0`) |
+| Breaking rewrites | **major** | `1.1.3` → `2.0.0` (tag `v2.0.0`) |
 
-### Tag rules
-
-Tags follow the **line**, not the patch:
-
-```
-1.0.0  ──▶  tag v1.0.0   (new tag, new release)
-1.0.1  ──▶  tag v1.0.0   (notes + installer appended to the same release)
-1.0.2  ──▶  tag v1.0.0   (same release again)
-1.1.0  ──▶  tag v1.1.0   (new tag, brand new release)
-```
-
-So `1.0.2` is published under the `v1.0.0` tag, exactly as the project intends.
+Each release opens its own tag and its own GitHub release page. Patches are never folded into an older tag.
 
 ### Making a release
 
-```bash
-npm run release                                  # bug-fix release, patch bump
-npm run release -- --bump minor                  # feature release
-npm run release:patch                            # shorthand
-npm run release:minor                            # shorthand
+The next version lives in `.release-version` at the repo root — set it manually
+when planning an update, then just run:
 
-npm run release -- --bump minor \
-  --title "Projects and playtests" \
-  --notes "Projects now keep their own sessions and review history."
+```bash
+npm run release
 ```
+
+That cuts exactly the version in the file (never an auto-increment). Flags exist
+only for one-off overrides (`--version x.y.z`, `--bump patch|minor|major`)
+plus `--title` / `--notes` for the release page.
 
 What the script does:
 
-1. Computes the next version and resolves the line tag.
+1. Computes the next version and its tag.
 2. Prepends a categorised entry to `CHANGELOG.md` (features / fixes / performance / docs / other,
    derived from your commits since the last tag).
 3. Bumps `package.json`, builds the renderer, and packages `Codeon-Setup-<version>.exe`.
 4. Computes the SHA-256 of the installer and writes `dist/RELEASE_NOTES_<version>.md`.
-5. Commits, creates or reuses the tag, and pushes branch + tag.
-6. Creates the GitHub release for a new line, or **updates the existing one** for a patch —
-   replacing the installer asset and appending the new notes.
+5. Commits, creates the tag, and pushes branch + tag.
+6. Creates the GitHub release with the installer attached. Re-running the same
+   version refreshes that release in place instead of duplicating it.
 
 Authentication uses `GITHUB_TOKEN`, `GH_TOKEN` or `SHROOM_GITHUB_TOKEN` (or `--token`).
 Useful flags: `--dry-run`, `--skip-build`, `--no-push`, `--version x.y.z`, `--prerelease`.
@@ -355,6 +347,17 @@ To point Codeon at a non-standard Studio install, set a launcher command line un
 
 ## License
 
-[MIT](LICENSE) © ShroomyGod
+Codeon is published under the [Codeon Community License](LICENSE) — free to use,
+study, and build on, with three hard rules:
 
-Codeon is an independent project and is not affiliated with or endorsed by Roblox Corporation.
+* **No commercial use.** Nobody may sell it, put it behind a paywall, or wrap it
+  in a paid product.
+* **No advertising or monetization.** No ads, sponsorships, or donations in or
+  around anything built with it.
+* **Built-on projects stay open.** Anything built on top of the engine must
+  release its full source under the same license, carry the same
+  no-monetization rules, and credit the original:
+  *Built on Codeon by ShroomyGod.*
+
+© ShroomyGod. Codeon is an independent project and is not affiliated with or
+endorsed by Roblox Corporation.
