@@ -8,6 +8,10 @@ line is published under that line's first tag (1.0.2 lives under `v1.0.0`).
 
 ## v1.0.0
 
+### 1.0.2 — 2026-10-10
+
+- Maintenance release.
+
 ### 1.0.1 — 2026-10-10
 
 - Maintenance release.
