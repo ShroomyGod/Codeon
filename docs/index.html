@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codeon — AI copilot for Roblox Studio</title>
+<meta name="description" content="Codeon attaches to your live Roblox Studio session, reads the real DataModel, and proposes every change as a reviewable diff.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%238b5cf6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%2308080d'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-dot"></span>Codeon</a>
+    <nav class="tabs">
+      <a href="index.html" class="active">Home</a>
+      <a href="setup.html">Setup</a>
+      <a href="studio-mcp.html">Studio&nbsp;MCP</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn small" href="https://github.com/ShroomyGod/Codeon/releases/latest">Download</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="pill"><span class="dot"></span>AI copilot for Roblox Studio</span>
+    <h1>Build your place.<br><span class="grad">Review every diff.</span></h1>
+    <p class="lede">Codeon attaches to your live Studio session, reads the real DataModel, and proposes changes as diffs you accept or reject — before anything touches your place.</p>
+    <ul class="checks">
+      <li>No plugin to install</li>
+      <li>Every change reviewable</li>
+      <li>Free models included</li>
+    </ul>
+
+    <div class="cta-card">
+      <div class="cta-row">
+        <div style="flex:1;min-width:220px">
+          <strong>Get Codeon for Windows</strong>
+          <p class="cta-sub" style="margin:6px 0 0">Free download · 64-bit installer · your projects and settings survive updates.</p>
+        </div>
+        <a class="btn" href="https://github.com/ShroomyGod/Codeon/releases/latest">Download ↓</a>
+      </div>
+      <div class="cta-links">
+        <a href="setup.html">Setup guide →</a>
+        <a href="studio-mcp.html">Attach Studio →</a>
+        <a href="https://github.com/ShroomyGod/Codeon">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><b>17</b><span>AI providers</span></div>
+      <div class="stat"><b>30+</b><span>built-in tools</span></div>
+      <div class="stat"><b>~30</b><span>live Studio tools</span></div>
+      <div class="stat"><b>300+</b><span>automated tests</span></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Everything around your live place</h2>
+    <p class="sub">Not a chatbot next to your editor — Codeon sees what you see and proves what it did.</p>
+    <div class="grid">
+      <div class="card"><h3><span class="ico">◈</span>Live attachment</h3><p>Drives Studio through its own MCP server. Reads the real DataModel, edits real scripts and properties, runs real playtests.</p></div>
+      <div class="card"><h3><span class="ico">◈</span>Review queue</h3><p>Every script edit lands as a diff with Accept / Reject. Nothing reaches your place without your say-so.</p></div>
+      <div class="card"><h3><span class="ico">◈</span>Explorer &amp; properties</h3><p>Browse instances, read and edit properties with type-aware coercion, stage local overrides.</p></div>
+      <div class="card"><h3><span class="ico">◈</span>Playtests &amp; console</h3><p>Start Run-mode playtests, stream Studio output live, paste errors back into chat for fixes.</p></div>
+      <div class="card"><h3><span class="ico">◈</span>Project intelligence</h3><p>Semantic search, impact analysis, health checks, data-flow maps and test planning over your cached snapshot.</p></div>
+      <div class="card"><h3><span class="ico">◈</span>17 providers</h3><p>Free keyless models out of the box, your own API keys, or fully local Ollama / LM Studio.</p></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>How a change lands</h2>
+    <p class="sub">The same loop every time — you stay in control at the only step that matters.</p>
+    <div class="diagram">
+      <svg viewBox="0 0 720 150" role="img" aria-label="Ask, inspect, review, apply, playtest workflow">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8" fill="none" stroke="#a78bfa" stroke-width="1.6"/>
+          </marker>
+        </defs>
+        <g font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">
+          <rect x="8" y="45" width="120" height="60" rx="12" fill="#12121c" stroke="#a78bfa" stroke-width="1.5"/>
+          <text x="68" y="70" fill="#f2f2f7">Ask</text>
+          <text x="68" y="88" fill="#6d6d85" font-weight="400" font-size="11">plain language</text>
+          <rect x="158" y="45" width="120" height="60" rx="12" fill="#12121c" stroke="#232333"/>
+          <text x="218" y="70" fill="#f2f2f7">Inspect</text>
+          <text x="218" y="88" fill="#6d6d85" font-weight="400" font-size="11">read the place</text>
+          <rect x="308" y="45" width="120" height="60" rx="12" fill="#12121c" stroke="#8b5cf6" stroke-width="2"/>
+          <text x="368" y="70" fill="#f2f2f7">Review</text>
+          <text x="368" y="88" fill="#a78bfa" font-weight="400" font-size="11">you decide</text>
+          <rect x="458" y="45" width="120" height="60" rx="12" fill="#12121c" stroke="#232333"/>
+          <text x="518" y="70" fill="#f2f2f7">Apply</text>
+          <text x="518" y="88" fill="#6d6d85" font-weight="400" font-size="11">to Studio</text>
+          <rect x="608" y="45" width="104" height="60" rx="12" fill="#12121c" stroke="#232333"/>
+          <text x="660" y="70" fill="#f2f2f7">Playtest</text>
+          <text x="660" y="88" fill="#6d6d85" font-weight="400" font-size="11">verify live</text>
+        </g>
+        <g stroke="#a78bfa" stroke-width="1.6">
+          <line x1="128" y1="75" x2="154" y2="75" marker-end="url(#arr)"/>
+          <line x1="278" y1="75" x2="304" y2="75" marker-end="url(#arr)"/>
+          <line x1="428" y1="75" x2="454" y2="75" marker-end="url(#arr)"/>
+          <line x1="578" y1="75" x2="604" y2="75" marker-end="url(#arr)"/>
+        </g>
+      </svg>
+      <div class="cap">Review is the gate: inspection and playtests inform it, but only your approval applies a change.</div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Models, your way</h2>
+    <p class="sub">Start free with no account. Bring keys — or run everything on your own machine.</p>
+    <table>
+      <tr><th>Option</th><th>What it is</th><th>Setup</th></tr>
+      <tr><td><strong>OpenCode Zen</strong></td><td>Free keyless models, ready on first launch</td><td>None — it just works</td></tr>
+      <tr><td><strong>Managed APIs</strong></td><td>OpenAI, Anthropic, Google, OpenRouter, Groq, DeepSeek, Mistral, xAI, Together, Cerebras, NVIDIA, Copilot</td><td>Paste a key in Settings → Providers</td></tr>
+      <tr><td><strong>Local</strong></td><td>Ollama or LM Studio on your machine</td><td>Point Codeon at the local server — no key, no cloud</td></tr>
+    </table>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <span><strong style="color:var(--text)">Codeon</strong> · AI copilot for Roblox Studio</span>
+    <span class="spacer"></span>
+    <a href="https://github.com/ShroomyGod/Codeon">GitHub</a>
+    <a href="https://github.com/ShroomyGod/Codeon/issues">Issues</a>
+    <a href="https://github.com/ShroomyGod/Codeon/releases/latest">Releases</a>
+  </div>
+</footer>
+
+</body>
+</html>

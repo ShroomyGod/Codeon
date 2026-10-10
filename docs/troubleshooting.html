@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting — Codeon</title>
+<meta name="description" content="Fix the common Codeon problems: window won't open, Studio not found, model errors.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%238b5cf6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%2308080d'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-dot"></span>Codeon</a>
+    <nav class="tabs">
+      <a href="index.html">Home</a>
+      <a href="setup.html">Setup</a>
+      <a href="studio-mcp.html">Studio&nbsp;MCP</a>
+      <a href="troubleshooting.html" class="active">Troubleshooting</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn small" href="https://github.com/ShroomyGod/Codeon/releases/latest">Download</a>
+    </div>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="crumbs"><a href="index.html">← Home</a><a href="setup.html">Setup →</a><a href="studio-mcp.html">Studio MCP →</a></div>
+  <h1>Troubleshooting</h1>
+
+  <h2>The Codeon window never opens</h2>
+  <ol>
+    <li>Open <strong>Task Manager</strong> and end any lingering <code>Codeon</code> processes — a stuck first instance makes every new launch quit silently (single-instance lock).</li>
+    <li>Launch Codeon again. If it still shows nothing, <strong>reinstall the latest installer</strong> from the <a href="https://github.com/ShroomyGod/Codeon/releases/latest">releases page</a> over the top.</li>
+    <li>Still stuck? <a href="https://github.com/ShroomyGod/Codeon/issues">Open an issue</a> and mention your Windows version and which installer you ran.</li>
+  </ol>
+
+  <h2>Windows SmartScreen blocks the installer</h2>
+  <p>Expected for an unsigned build: choose <em>More info → Run anyway</em>.</p>
+
+  <h2>Studio isn't found</h2>
+  <p>Codeon looks for Roblox's own launcher (<code>mcp.bat</code> that Studio writes, falling back to the newest <code>StudioMCP.exe</code>). If Studio lives somewhere unusual, paste the full launcher command line into <strong>Settings → Studio attachment</strong> as an override, then press <strong>Reconnect</strong>.</p>
+
+  <h2>Connected, but nothing happens in my place</h2>
+  <ul>
+    <li>Make sure a <strong>place is actually open</strong> in Studio, not just the start screen.</li>
+    <li>Check you are attached to the right window when several are open.</li>
+    <li>Remember: script edits and code runs wait in the <strong>Review</strong> queue until you accept them — that is the app working as intended, not a freeze.</li>
+  </ul>
+
+  <h2>Model / provider errors</h2>
+  <table>
+    <tr><th>Message</th><th>Meaning</th><th>Fix</th></tr>
+    <tr><td>Rejected the API key (401)</td><td>The key is wrong or revoked</td><td>Re-check it in Settings</td></tr>
+    <tr><td>Out of credit (402)</td><td>The provider account is empty</td><td>Top up or switch provider</td></tr>
+    <tr><td>Access denied (403)</td><td>The key may not use that model</td><td>Pick a model your plan covers</td></tr>
+    <tr><td>Not found (404)</td><td>Wrong model id or base URL</td><td>Check both in Settings</td></tr>
+    <tr><td>Rate limited (429)</td><td>Too many requests</td><td>Wait a moment or switch provider</td></tr>
+    <tr><td>Took too long (3 minute timeout)</td><td>The provider stalled</td><td>Retry; large requests stream for a while</td></tr>
+  </table>
+  <p><code>Request cancelled</code> just means you pressed <strong>Stop</strong> (or <code>Esc</code> in the composer) — nothing broke.</p>
+
+  <h2>Something else</h2>
+  <p><a href="https://github.com/ShroomyGod/Codeon/issues">Open an issue</a> with what you clicked, what you expected, and the exact message Codeon showed.</p>
+</main>
+
+<footer>
+  <div class="foot">
+    <span><strong style="color:var(--text)">Codeon</strong> · AI copilot for Roblox Studio</span>
+    <span class="spacer"></span>
+    <a href="https://github.com/ShroomyGod/Codeon">GitHub</a>
+    <a href="https://github.com/ShroomyGod/Codeon/issues">Issues</a>
+    <a href="https://github.com/ShroomyGod/Codeon/releases/latest">Releases</a>
+  </div>
+</footer>
+
+</body>
+</html>

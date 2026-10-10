@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attach Studio as an MCP server — Codeon</title>
+<meta name="description" content="Connect Codeon to your live Roblox Studio place through Studio's own MCP server. No plugin to install.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%238b5cf6'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%2308080d'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-dot"></span>Codeon</a>
+    <nav class="tabs">
+      <a href="index.html">Home</a>
+      <a href="setup.html">Setup</a>
+      <a href="studio-mcp.html" class="active">Studio&nbsp;MCP</a>
+      <a href="troubleshooting.html">Troubleshooting</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn small" href="https://github.com/ShroomyGod/Codeon/releases/latest">Download</a>
+    </div>
+  </div>
+</header>
+
+<main class="doc">
+  <div class="crumbs"><a href="index.html">← Home</a><a href="setup.html">Setup →</a><a href="troubleshooting.html">Troubleshooting →</a></div>
+  <h1>Attach Studio as an MCP server</h1>
+  <p>There is <strong>no Codeon plugin</strong>. Roblox Studio ships its own MCP server — the same one behind Studio's built-in Assistant — and Codeon is simply another client of it. Nothing is installed into Studio and no network socket is opened.</p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 720 190" role="img" aria-label="Codeon spawns Studio's MCP server locally and speaks JSON-RPC over stdio">
+      <g font-family="Segoe UI, system-ui, sans-serif" text-anchor="middle">
+        <rect x="20" y="40" width="220" height="110" rx="12" fill="#12121c" stroke="#232333"/>
+        <text x="130" y="72" fill="#f2f2f7" font-size="15" font-weight="700">Roblox Studio</text>
+        <text x="130" y="94" fill="#6d6d85" font-size="12">StudioMCP.exe + open place</text>
+        <text x="130" y="112" fill="#6d6d85" font-size="12">~30 tools</text>
+        <text x="130" y="130" fill="#a78bfa" font-size="12" font-weight="700">its own MCP server</text>
+        <rect x="480" y="40" width="220" height="110" rx="12" fill="#12121c" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="590" y="72" fill="#f2f2f7" font-size="15" font-weight="700">Codeon</text>
+        <text x="590" y="94" fill="#6d6d85" font-size="12">spawns the launcher</text>
+        <text x="590" y="112" fill="#6d6d85" font-size="12">JSON-RPC over stdio</text>
+        <text x="590" y="130" fill="#a78bfa" font-size="12" font-weight="700">MCP client</text>
+        <text x="360" y="78" fill="#a78bfa" font-size="12" font-weight="700">spawn + handshake</text>
+        <text x="360" y="112" fill="#6d6d85" font-size="12">tools/list · tools/call</text>
+      </g>
+      <g stroke="#a78bfa" stroke-width="1.6">
+        <line x1="244" y1="85" x2="476" y2="85"/>
+        <line x1="476" y1="105" x2="244" y2="105"/>
+      </g>
+    </svg>
+    <div class="cap">Codeon spawns Roblox's own launcher locally. Your place never leaves the machine.</div>
+  </div>
+
+  <h2>Steps</h2>
+  <ol>
+    <li>In Roblox Studio, open <strong>Assistant → MCP</strong> (on some versions: <strong>Assistant → Manage MCP Servers</strong>) and <strong>enable the MCP server</strong>. This only needs doing once.</li>
+    <li><strong>Open a place</strong> in Studio — Codeon can only see places you have open.</li>
+    <li>In Codeon, press <strong>Connect to Studio</strong> (or <strong>Reconnect</strong> in Settings). Codeon launches Studio's bundled MCP server, handshakes with it, and lists your open Studio windows.</li>
+    <li>The status chip turns green and shows the place name, plus the number of available tools (around 30).</li>
+  </ol>
+  <div class="callout">Ask for a change and you will get a <strong>reviewable diff</strong> before anything touches your place.</div>
+
+  <h2>Multiple Studio windows</h2>
+  <p>If more than one place is open, Codeon attaches to one and offers a picker for the rest. Closing the attached window moves Codeon to the first remaining one automatically.</p>
+
+  <h2>How Codeon finds the server</h2>
+  <p>Codeon resolves Roblox's launcher in order — override, Studio-written launcher, then the newest bundled server:</p>
+  <table>
+    <tr><th>Order</th><th>Source</th><th>Notes</th></tr>
+    <tr><td>1</td><td><strong>Your override</strong></td><td>Full command line in Settings → Studio attachment</td></tr>
+    <tr><td>2</td><td><code>%LOCALAPPDATA%\Roblox\mcp.bat</code></td><td>Written by Studio itself</td></tr>
+    <tr><td>3</td><td>Newest <code>Versions\*\StudioMCP.exe</code></td><td>Fallback when <code>mcp.bat</code> is missing</td></tr>
+  </table>
+
+  <h2>If it doesn't connect</h2>
+  <table>
+    <tr><th>Symptom</th><th>Meaning</th><th>Fix</th></tr>
+    <tr><td>“Studio MCP server not found”</td><td>Studio isn't installed where Codeon looks</td><td>Paste a launcher command line as an override, then Reconnect</td></tr>
+    <tr><td>“Waiting for a place”</td><td>Server runs, but no open place found</td><td>Open a place, then Reconnect</td></tr>
+    <tr><td>Zero tools after connecting</td><td>Studio's own MCP setting is off</td><td>Go back to step 1</td></tr>
+    <tr><td>“No instance attached” on calls</td><td>Handshake ok, but no Studio window attached</td><td>Open a place and Reconnect</td></tr>
+  </table>
+</main>
+
+<footer>
+  <div class="foot">
+    <span><strong style="color:var(--text)">Codeon</strong> · AI copilot for Roblox Studio</span>
+    <span class="spacer"></span>
+    <a href="https://github.com/ShroomyGod/Codeon">GitHub</a>
+    <a href="https://github.com/ShroomyGod/Codeon/issues">Issues</a>
+    <a href="https://github.com/ShroomyGod/Codeon/releases/latest">Releases</a>
+  </div>
+</footer>
+
+</body>
+</html>
