@@ -4,6 +4,17 @@ Every Codeon release is documented here. Release notes explain not only what cha
 
 Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Every version gets its own tag and its own GitHub release (`1.2.0` lives under `v1.2.0` alone).
 
+## v1.3.0
+
+### 1.3.0 — 2026-10-10
+
+- Maintenance release.
+
+## Unreleased
+
+**Fixes**
+- Free chat without an API key now runs through Pollinations instead of OpenCode Zen: OpenCode's keyless tier answers outside clients with `FreeTierError`, so every keyless request 403'd. Pollinations was verified working keyless (plain and streamed chat); it is community-run, so expect rate limits and transient errors. Existing installs stuck on keyless Zen migrate to the new default on startup; Zen entries now require a key.
+
 ## v1.2.2
 
 ### 1.2.2 — 2026-10-10
