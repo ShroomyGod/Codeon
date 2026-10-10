@@ -24,6 +24,10 @@ This change also fixes three pre-existing working-tree type errors: an undefined
 
 ## v1.1.0
 
+### 1.1.2 — 2026-10-10
+
+- Maintenance release.
+
 ### 1.1.1 — 2026-10-10
 
 - Maintenance release.
