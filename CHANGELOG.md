@@ -4,6 +4,12 @@ Every Codeon release is documented here. Release notes explain not only what cha
 
 Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Every version gets its own tag and its own GitHub release (`1.2.0` lives under `v1.2.0` alone).
 
+## v1.3.2
+
+### 1.3.2 — 2026-10-10
+
+- Maintenance release.
+
 ## v1.3.1
 
 ### 1.3.1 — 2026-10-10
@@ -21,6 +27,7 @@ Version scheme: bug fixes increment patch versions; substantial feature releases
 **Fixes**
 - Free chat without an API key now runs through Pollinations instead of OpenCode Zen: OpenCode's keyless tier answers outside clients with `FreeTierError`, so every keyless request 403'd. Pollinations was verified working keyless (plain and streamed chat); it is community-run, so expect rate limits and transient errors. Existing installs stuck on keyless Zen migrate to the new default on startup; Zen entries now require a key.
 - Stalled streams no longer spin forever: if an OpenAI-compatible endpoint goes quiet for 60s, Codeon retries the request once without streaming before reporting an error.
+- Gateway timeouts (502/503/524) get exactly one retry after 2s, and HTML error pages (e.g. Cloudflare) render as their page title instead of markup soup in the chat.
 
 ## v1.2.2
 
