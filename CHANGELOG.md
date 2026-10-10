@@ -2,7 +2,13 @@
 
 Every Codeon release is documented here. Release notes explain not only what changed, but why the workflow changed and where its boundaries are.
 
-Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Tags follow a feature line (`1.1.2` updates `v1.1.0`).
+Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Every version gets its own tag and its own GitHub release (`1.2.0` lives under `v1.2.0` alone).
+
+## v1.2.0
+
+### 1.2.0 — 2026-10-10
+
+- Maintenance release.
 
 ## Unreleased — startup fix (not yet released)
 
