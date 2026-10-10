@@ -4,6 +4,10 @@ Every Codeon release is documented here. Release notes explain not only what cha
 
 Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Tags follow a feature line (`1.1.2` updates `v1.1.0`).
 
+## Unreleased — startup fix (not yet released)
+
+Fixed a fatal startup crash that shipped in 1.1.2: `registerIpc` registered the `projects:setMapCorrection` channel twice, so Electron threw during bootstrap and quit before any window opened. Removed the duplicate handler and an unreachable duplicate `knowledge_lookup` case in the tool runner. Added `tests/startup.test.ts`, which fails the suite if an IPC channel, tool definition, or runner case is ever registered twice, or if `INVOKE_CHANNELS` and the `ApiMap` drift apart. Also fixed a latent type error (`ResponseMode` not re-exported from `@shared/types`).
+
 ## Unreleased — experimental features and next-generation development
 
 Sixteen local-first workflow tools join the agent catalog (`modify_plan`, `prototype`, `balance_scan`, `economy_analyze`, `procgen_analyze`, `combat_review`, `sync_analyze`, `docs_generate`, `onboard`, `migrate_plan`, `trace_requirements`, `failure_record`, `task_queue`, `review_report`, `workflow`, `api_check`), each mirrored by a typed `analysis:*` IPC channel and renderer wrappers in `src/renderer/src/analysis.ts`, with validated persistence channels (`prototypes:save`, `requirements:save`, `failures:save`, `tasks:save`, `docs:save`) and optional `Project`/`Settings` fields.
@@ -23,6 +27,10 @@ Boundaries from the spec are enforced in code, not just documented: no fabricate
 This change also fixes three pre-existing working-tree type errors: an undefined `commit` handler in the properties panel (blur would have thrown at runtime), an un-narrowed editor spread in the renderer store, and two handled-but-unexposed property-override IPC channels that the preload bridge was blocking.
 
 ## v1.1.0
+
+### 1.1.3 — 2026-10-10
+
+- Maintenance release.
 
 ### 1.1.2 — 2026-10-10
 
