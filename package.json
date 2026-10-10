@@ -1,7 +1,7 @@
 {
   "name": "codeon",
   "productName": "Codeon",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Codeon — an AI copilot for Roblox Studio. Attach to a live Studio instance, chat with free OpenCode Zen models or bring your own provider key, review every change as a diff, edit code and properties, and run playtests without leaving the app.",
   "main": "./out/main/index.js",
   "author": {
