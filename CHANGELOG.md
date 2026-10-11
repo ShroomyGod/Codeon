@@ -4,6 +4,21 @@ Every Codeon release is documented here. Release notes explain not only what cha
 
 Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Every version gets its own tag and its own GitHub release (`1.2.0` lives under `v1.2.0` alone).
 
+## v1.4.0
+
+### 1.4.0 — 2026-10-11
+
+- Maintenance release.
+
+## Unreleased
+
+**Assistant behavior**
+- The AI now asks blocking questions through clickable cards (`ask_question` tool): 2–4 options with a marked recommendation plus a free-text answer, replacing prose questions. The run waits for the answer; cancelling stops it.
+- The giant project-context card is now one compact row — details expand on click instead of flooding the chat.
+- The assistant defaults to doing the work instead of writing plans: plans appear only when asked for, when 3+ files interact unclearly, or when a decision blocks progress (asked via the question tool, then acted on).
+- Response formatting is now specified (bold, italics, code, lists — exactly what the renderer supports) with a preference for typed instance/property tools over raw Luau.
+- System prompt v3 (v1/v2 kept for rollback in Settings).
+
 ## v1.3.2
 
 ### 1.3.2 — 2026-10-10
