@@ -4,6 +4,12 @@ Every Codeon release is documented here. Release notes explain not only what cha
 
 Version scheme: bug fixes increment patch versions; substantial feature releases increment the minor version. Every version gets its own tag and its own GitHub release (`1.2.0` lives under `v1.2.0` alone).
 
+## v1.5.1
+
+### 1.5.1 — 2026-10-11
+
+- Maintenance release.
+
 ## v1.5.0
 
 ### 1.5.0 — 2026-10-11
