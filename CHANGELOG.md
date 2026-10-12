@@ -6,6 +6,10 @@ Version scheme: bug fixes increment patch versions; substantial feature releases
 
 ## v1.5.1
 
+### 1.5.1 — 2026-10-12
+
+- Maintenance release.
+
 ### 1.5.1 — 2026-10-11
 
 - Maintenance release.

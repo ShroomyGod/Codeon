@@ -58,5 +58,8 @@
     "typescript": "^7.0.2",
     "vite": "^7.3.7",
     "zustand": "^5.0.15"
+  },
+  "dependencies": {
+    "@opencode-ai/sdk": "^1.19.0"
   }
 }
